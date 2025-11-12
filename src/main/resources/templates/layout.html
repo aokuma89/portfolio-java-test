@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Portfolio App</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Portfolio 商品管理</h1>
+    <nav>
+        <a th:href="@{/}">一覧</a> |
+        <a th:href="@{/items/new}">新規登録</a>
+    </nav>
+    <hr>
+</header>
+
+<main>
+    <div th:replace="${content}"></div>
+</main>
+
+<footer>
+    <hr>
+    <p>&copy; 2025 Portfolio System</p>
+</footer>
+</body>
+</html>

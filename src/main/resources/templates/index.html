@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Portfolio 商品管理</h1>
+    <nav>
+        <a th:href="@{/}">一覧</a> |
+        <a th:href="@{/items/new}">新規登録</a>
+    </nav>
+    <hr>
+</header>
+
+<main>
+    <h2>商品一覧</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>カテゴリ</th>
+                <th>商品名</th>
+                <th>価格</th>
+                <th>説明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.category.name}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.price} + '円'"></td>
+                <td th:text="${item.description}"></td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer>
+    <hr>
+    <p>&copy; 2025 Portfolio System</p>
+</footer>
+</body>
+</html>

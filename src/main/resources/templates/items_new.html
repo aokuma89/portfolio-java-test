@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品登録</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>Portfolio 商品管理</h1>
+    <nav>
+        <a th:href="@{/}">一覧</a> |
+        <a th:href="@{/items/new}">新規登録</a>
+    </nav>
+    <hr>
+</header>
+
+<main>
+    <h2>商品登録フォーム</h2>
+    <form th:action="@{/items}" method="post" th:object="${item}">
+        <p>
+            <label>商品名：</label>
+            <input type="text" th:field="*{name}" required>
+        </p>
+        <p>
+            <label>価格：</label>
+            <input type="number" th:field="*{price}" required>
+        </p>
+        <p>
+            <label>説明：</label><br>
+            <textarea th:field="*{description}" rows="3" cols="30"></textarea>
+        </p>
+        <p>
+            <label>カテゴリ：</label>
+			<select th:field="*{category.id}" required>
+			    <option th:each="cat : ${categories}"
+			            th:value="${cat.id}" 
+			            th:text="${cat.name}">
+			    </option>
+			</select>
+        </p>
+        <p>
+            <button type="submit">登録</button>
+            <a th:href="@{/}">キャンセル</a>
+        </p>
+    </form>
+</main>
+
+<footer>
+    <hr>
+    <p>&copy; 2025 Portfolio System</p>
+</footer>
+</body>
+</html>
